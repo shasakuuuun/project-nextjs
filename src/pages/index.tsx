@@ -19,6 +19,7 @@ import {
 const loginSchema = z.object({
   email: z.string().email({ message: "Harap masukkan alamat email yang valid" }),
   password: z.string().min(6, { message: "Password minimal harus 6 karakter" }),
+  kodeAkses: z.string().min(4, { message: "kodane minimal 4 karakter lur" }),
 });
 
 // Mendefinisikan tipe data form berdasarkan skema
@@ -33,6 +34,7 @@ export default function Login() {
     defaultValues: {
       email: "",
       password: "",
+      kodeAkses: "",
     },
   });
 
@@ -65,7 +67,7 @@ export default function Login() {
       </Head>
       
       <div className="flex min-h-screen flex-col items-center justify-center p-4 bg-blue-300">
-      <div className="w-full max-w-lg space-y-6 border rounded-2xl shadow-2xl p-10 bg-white">
+      <div className="w-full max-w-lg space-y-6 border rounded-2xl shadow-3xl p-10 bg-white">
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold text-red-500">Sign in</h1>
             <Link 
@@ -115,7 +117,30 @@ export default function Login() {
                   </FormItem>
                 )}
               />
-              
+
+              {/* <FormField
+                control={form.control}
+                name="kodeAkses"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-black">Kode Akses</FormLabel>
+                    <FormControl>
+                      <Input 
+                        className="border-black text-black" 
+                        placeholder="Kode Akses" 
+                        disabled={isLoading} 
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              /> */}
+
+              <p className='text-sm text-blue-600 mt-4 text-center'>tolong di ingat setiap inputan yang anda masukan!</p>
+
+
+
               <Button 
                 type="submit" 
                 className="w-full bg-slate-900 hover:bg-slate-800 text-white" 
