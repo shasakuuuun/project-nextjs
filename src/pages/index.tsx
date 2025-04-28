@@ -66,7 +66,14 @@ export default function Login() {
         <meta name="description" content="Sign in to your account" />
       </Head>
       
-      <div className="flex min-h-screen flex-col items-center justify-center p-4 bg-blue-300">
+      <div 
+        className="flex min-h-screen flex-col items-center justify-center p-4 bg-black"
+        style={{
+          backgroundImage: "url('/img/boyu-yan-PF23iOhQeZE-unsplash.jpg')",  
+          backgroundSize: "cover",  
+          backgroundPosition: "center" 
+        }}
+      >
       <div className="w-full max-w-lg space-y-6 border rounded-2xl shadow-3xl p-10 bg-white">
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold text-red-500">Sign in</h1>
