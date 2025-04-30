@@ -150,7 +150,7 @@ export default function Login() {
 
               <Button 
                 type="submit" 
-                className="w-full bg-slate-900 hover:bg-slate-800 text-white" 
+                className="w-full bg-slate-900 hover:bg-blue-500 text-white" 
                 disabled={isLoading}
               >
                 {isLoading ? "Sedang masuk..." : "Here we go!"}
