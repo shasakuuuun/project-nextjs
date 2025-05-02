@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
+import z from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { 
@@ -19,7 +19,7 @@ import {
 const loginSchema = z.object({
   email: z.string().email({ message: "Harap masukkan alamat email yang valid" }),
   password: z.string().min(6, { message: "Password minimal harus 6 karakter" }),
-  kodeAkses: z.string().min(4, { message: "kodane minimal 4 karakter lur" }),
+  // kodeAkses: z.string().min(4, { message: "kodane minimal 4 karakter lur" }).optional()
 });
 
 // Mendefinisikan tipe data form berdasarkan skema
@@ -34,29 +34,30 @@ export default function Login() {
     defaultValues: {
       email: "",
       password: "",
-      kodeAkses: "",
+      // kodeAkses: "",
     },
   });
 
   // Menangani pengiriman form
-  const onSubmit = async (data: LoginFormValues) => {
-    setIsLoading(true);
+  const onSubmit = (data: LoginFormValues) => {
+    console.log(data)
+    // setIsLoading(true);
     
-    try {
-      // Di sini biasanya Anda akan membuat panggilan API untuk autentikasi pengguna
-      console.log("Percobaan login dengan:", data);
+    // try {
+    //   // Di sini biasanya Anda akan membuat panggilan API untuk autentikasi pengguna
+    //   console.log("Percobaan login dengan:", data);
       
-      // Simulasi penundaan panggilan API
-      await new Promise(resolve => setTimeout(resolve, 1000));
+    //   // Simulasi penundaan panggilan API
+    //   await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Menangani login yang berhasil (misalnya, redirect ke dashboard)
-      alert("Login berhasil! (Ini hanya demo)");
+    //   // Menangani login yang berhasil (misalnya, redirect ke dashboard)
+    //   alert("Login berhasil! (Ini hanya demo)");
       
-    } catch (error) {
-      console.error("Login gagal:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    // } catch (error) {
+    //   console.error("Login gagal:", error);
+    // } finally {
+    //   setIsLoading(false);
+    // }
   };
 
   return (
@@ -86,7 +87,9 @@ export default function Login() {
           </div>
           
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={form.handleSubmit(onSubmit, error => {
+              console.log(error)
+            })} className="space-y-4">
               <FormField
                 control={form.control}
                 name="email"
